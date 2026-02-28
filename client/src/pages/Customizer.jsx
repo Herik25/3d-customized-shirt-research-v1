@@ -63,13 +63,13 @@ function Customizer() {
     reader.readAsDataURL(file);
   };
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (type) => {
     if (!prompt) alert("Please enter a prompt");
 
     try {
       setGeneratingImg(true);
 
-      const response = await fetch("http://localhost:8080/api/v1/dalle", {
+      const response = await fetch("http://localhost:5000/api/v1/gemini", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -78,7 +78,7 @@ function Customizer() {
       });
 
       const data = await response.json();
-      handleDecals("logo", `data:image/png;base64,${data.photo}`);
+      handleDecals(type, `data:image/png;base64,${data.photo}`);
     } catch (error) {
       alert(error);
     } finally {
