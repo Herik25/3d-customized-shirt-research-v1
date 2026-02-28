@@ -1,11 +1,12 @@
 import React from "react";
-import { useSnapshot } from "valtio";
-import state from "../store";
-import { Decal, useGLTF, useTexture } from "@react-three/drei";
-import { useFrame } from "@react-three/fiber";
 import { easing } from "maath";
+import { useSnapshot } from "valtio";
+import { useFrame } from "@react-three/fiber";
+import { Decal, useGLTF, useTexture } from "@react-three/drei";
 
-function Shirt() {
+import state from "../store";
+
+const Shirt = () => {
   const snap = useSnapshot(state);
   const { nodes, materials } = useGLTF("/shirt_baked.glb");
 
@@ -42,7 +43,7 @@ function Shirt() {
             rotation={[0, 0, 0]}
             scale={0.15}
             map={logoTexture}
-            map-anisotropy={16}
+            anisotropy={16}
             depthTest={false}
             depthWrite={true}
           />
@@ -50,6 +51,6 @@ function Shirt() {
       </mesh>
     </group>
   );
-}
+};
 
 export default Shirt;
