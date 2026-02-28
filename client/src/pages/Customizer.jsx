@@ -12,7 +12,6 @@ import {
   FilePicker,
   Tab,
 } from "../components";
-import { logoShirt } from "../assets";
 
 function Customizer() {
   const snap = useSnapshot(state);
